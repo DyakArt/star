@@ -1,0 +1,92 @@
+{#Указываем какой общий шаблон мы будем использовать для каждой страницы#}
+{% extends 'main/base.html' %}
+{% load static %}
+
+{#Добавляем основной контент для страницы с вакансиями#}
+{% block main %}
+    <main>
+        <div class="container vacancies">
+            <div class="content">
+                <h2>{{ vacancies_title }}</h2>
+                <div class="block_vacancies">
+                    <h3 id="work_vacancies">Рабочие вакансии </h3>
+                    <div class="cards">
+                        <div class="card">
+                            <h4>Должность</h4>
+                            <p>50 000 ₽</p>
+                            <button class="respond">Откликнуться</button>
+                        </div>
+                        <div class="card">
+                            <h4>Должность</h4>
+                            <p>50 000 ₽</p>
+                            <button class="respond">Откликнуться</button>
+                        </div>
+                        <div class="card">
+                            <h4>Должность</h4>
+                            <p>50 000 ₽</p>
+                            <button class="respond">Откликнуться</button>
+                        </div>
+                        <div class="card">
+                            <h4>Должность</h4>
+                            <p>50 000 ₽</p>
+                            <button class="respond">Откликнуться</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="block_vacancies">
+                    <h3 id="engineering_vacancies">Инженерно-технические вакансии </h3>
+                    <div class="cards">
+                        <div class="card">
+                            <h4>Должность</h4>
+                            <p>50 000 ₽</p>
+                            <button class="respond">Откликнуться</button>
+                        </div>
+                        <div class="card">
+                            <h4>Должность</h4>
+                            <p>50 000 ₽</p>
+                            <button class="respond">Откликнуться</button>
+                        </div>
+                        <div class="card">
+                            <h4>Должность</h4>
+                            <p>50 000 ₽</p>
+                            <button class="respond">Откликнуться</button>
+                        </div>
+                        <div class="card">
+                            <h4>Должность</h4>
+                            <p>50 000 ₽</p>
+                            <button class="respond">Откликнуться</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="block_vacancies blank_vacancies">
+                    <h3 id="blank_vacancies">Анкета соискателя вакансии </h3>
+                    <div class="doc_files blank">
+                        <a href="#">Скачать бланк</a>
+                    </div>
+                </div>
+                <div class="block_vacancies resume_vacancies">
+                    <h3 id="resume_vacancies">Форма резюме </h3>
+                    <div class="doc_files blank">
+                        <a href="#">Скачать бланк</a>
+                    </div>
+                </div>
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h1>Должность</h1>
+                        <div class="input-container input_modal_window">
+                            <input type="text" placeholder="ФИО">
+                            <input type="text" placeholder="E-mail">
+                            <input type="text" placeholder="Номер телефона">
+                            <button class="respond send">Отправить</button>
+                        </div>
+                        <label class="submit_container">Я ознакомлен и согласен с <a target="_blank" href="{% url 'main:policy' %}">политикой обработки персональных данных</a>
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

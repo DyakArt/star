@@ -1,0 +1,30 @@
+{#Указываем какой общий шаблон мы будем использовать для каждой страницы#}
+{% extends 'main/base.html' %}
+{% load static %}
+
+{#Добавляем основной контент для страницы с документами#}
+{% block main %}
+    <main>
+        <div class="container documents">
+            <div class="content">
+                <h2>{{ documents_title }}</h2>
+                <div class="input-container">
+                    <input type="text" placeholder="Введите название документа">
+                </div>
+                <div class="doc_files">
+                    <ul>
+                        <li><a href="#">Название документа</a></li>
+                        <li><a href="#">Название документа</a></li>
+                        <li><a href="#">Название документа</a></li>
+                        <li><a href="#">Название документа</a></li>
+                        <li><a href="#">Название документа</a></li>
+                        <li><a href="#">Название документа</a></li>
+                        <li><a href="#">Название документа</a></li>
+                        <li><a href="#">Название документа</a></li>
+                        <li><a href="#">Название документа</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

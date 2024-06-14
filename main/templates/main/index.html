@@ -1,0 +1,61 @@
+{#Указываем какой общий шаблон мы будем использовать для каждой страницы#}
+{% extends 'main/base.html' %}
+{% load static %}
+
+{#Переопределяем header для главной страницы#}
+{% block header %}
+    <header>
+        <div class="header_contact_block">
+            <div class="logo">
+                <h1><a href="{% url 'main:index' %}">ОТДЕЛ КАДРОВ</a></h1>
+            </div>
+
+            <div class="header_contacts">
+                <div>
+                    <a href="mailto:info@star.ru">info@star.ru</a>
+                </div>
+                <div>
+                    <span>+7 (818) 469-60-93</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="header_nav">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'main:index' %}">Главная</a></li>
+                    <li><a href="{% url 'docs:documents' %}">Документы</a></li>
+                    <li><a href="{% url 'docs:applications' %}">Заявления</a></li>
+                    <li><a href="{% url 'vacancies:vacancies' %}">Вакансии</a></li>
+                    <li><a href="{% url 'main:reserve' %}">Кадровый Резерв</a></li>
+                    <li><a href="{% url 'main:info' %}">Полезная информация</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="header-content">
+            <h2>{{ event_title }}</h2>
+            <p>{{ event_content }}</p>
+            <div class="arrow-buttons">
+                <button class="arrow left-arrow">&lt;</button>
+                <button class="arrow right-arrow">&gt;</button>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{#Добавляем основной контент для главной страницы#}
+{% block main %}
+    <main>
+        <div class="container_main" id="history_ok">
+            <div class="main_content">
+                <div class="text_main">
+                    <h2>{{ history_title }}</h2>
+                    <p>{{ history_content_one }}</p>
+                    <p>{{ history_content_two }}</p>
+                </div>
+                <div class="video_main"></div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

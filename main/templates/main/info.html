@@ -1,0 +1,15 @@
+{#Указываем какой общий шаблон мы будем использовать для каждой страницы#}
+{% extends 'main/base.html' %}
+{% load static %}
+
+{#Добавляем основной контент для страницы с полезной информацией#}
+{% block main %}
+    <main>
+        <div class="container info">
+            <div class="content">
+                <h2>{{ info_title }}</h2>
+                <p>{{ info_content }}</p>
+            </div>
+        </div>
+    </main>
+{% endblock %}

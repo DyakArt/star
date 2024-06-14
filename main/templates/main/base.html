@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'deps/css/styles.css' %}">
+</head>
+<body>
+<!-- Блок для header -->
+{% block header %}
+    <header class="other_header">
+        <div class="header_contact_block">
+            <div class="logo">
+                <h1><a href="{% url 'main:index' %}">ОТДЕЛ КАДРОВ</a></h1>
+            </div>
+            <div class="header_contacts">
+                <div>
+                    <a href="mailto:info@star.ru">info@star.ru</a>
+                </div>
+                <div>
+                    <span>+7 (818) 469-60-93</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="header_nav">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'main:index' %}">Главная</a></li>
+                    <li><a href="{% url 'docs:documents' %}">Документы</a></li>
+                    <li><a href="{% url 'docs:applications' %}">Заявления</a></li>
+                    <li><a href="{% url 'vacancies:vacancies' %}">Вакансии</a></li>
+                    <li><a href="{% url 'main:reserve' %}">Кадровый Резерв</a></li>
+                    <li><a href="{% url 'main:info' %}">Полезная информация</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+{% endblock %}
+
+<!-- Блок для main -->
+{% block main %}
+
+{% endblock %}
+<footer>
+    <div class="footer_title">
+        <h1>ОТДЕЛ КАДРОВ</h1>
+    </div>
+    <div class="footer_nav">
+        <div class="footer_links">
+            <div class="footer_main">
+                <h3><a href="{% url 'main:index' %}">ГЛАВНАЯ</a></h3>
+                <ul>
+                    <li><a href="{% url 'main:index' %}#history_ok">История ОК</a></li>
+                    <li><a href="{% url 'main:hr_structure' %}">Структура ОК</a></li>
+                </ul>
+            </div>
+            <div class="footer_docs">
+                <h3><a href="{% url 'docs:documents' %}">ДОКУМЕНТЫ</a></h3>
+            </div>
+            <div class="footer_declarations">
+                <h3><a href="{% url 'docs:applications' %}">ЗАЯВЛЕНИЯ</a></h3>
+            </div>
+            <div class="footer_vacancies">
+                <h3><a href="{% url 'vacancies:vacancies' %}">ВАКАНСИИ</a></h3>
+                <ul>
+                    <li><a href="{% url 'vacancies:vacancies' %}#work_vacancies">Рабочие вакансии</a></li>
+                    <li><a href="{% url 'vacancies:vacancies' %}#engineering_vacancies">Инженерно-технические вакансии</a></li>
+                    <li><a href="{% url 'vacancies:vacancies' %}#blank_vacancies">Анкета соискателя</a></li>
+                    <li><a href="{% url 'vacancies:vacancies' %}#resume_vacancies">Форма резюме</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer_contacts">
+            <p>164509, Архангельская область, г. Северодвинск, проспект Машиностроителей, д. 12</p>
+            <span>+7 (818) 459-60-93</span>
+            <a href="mailto:info@star.ru">info@star.ru</a>
+        </div>
+    </div>
+</footer>
+<script src="{% static 'deps/js/script.js' %}"></script>
+</body>
+</html>

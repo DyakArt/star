@@ -1,0 +1,25 @@
+{#Указываем какой общий шаблон мы будем использовать для каждой страницы#}
+{% extends 'main/base.html' %}
+{% load static %}
+
+{#Добавляем основной контент для страницы с заявлениями#}
+{% block main %}
+    <main>
+        <div class="container applications">
+            <div class="content">
+                <h2>{{ applications_title }}</h2>
+                <div class="input-container">
+                    <input type="text" placeholder="Введите название заявления">
+                </div>
+                <div class="doc_files">
+                    <ul>
+                        <li><a href="#">Название заявления</a></li>
+                        <li><a href="#">Название заявления</a></li>
+                        <li><a href="#">Название заявления</a></li>
+                        <li><a href="#">Название заявления</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

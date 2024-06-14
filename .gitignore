@@ -1,0 +1,16 @@
+# python stuff
+../venv/
+.pylintrc
+__pycache__/
+
+# ide stuff
+.idea
+.vscode
+../src/
+
+# django stuff
+db.sqlite3
+media/
+
+# url for figma
+static/deps/design_star/url_figma_star.url
