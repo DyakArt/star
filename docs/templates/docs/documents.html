@@ -13,15 +13,9 @@
                 </div>
                 <div class="doc_files">
                     <ul>
-                        <li><a href="#">Название документа</a></li>
-                        <li><a href="#">Название документа</a></li>
-                        <li><a href="#">Название документа</a></li>
-                        <li><a href="#">Название документа</a></li>
-                        <li><a href="#">Название документа</a></li>
-                        <li><a href="#">Название документа</a></li>
-                        <li><a href="#">Название документа</a></li>
-                        <li><a href="#">Название документа</a></li>
-                        <li><a href="#">Название документа</a></li>
+                        {% for doc in docs %}
+                            <li><a href="{{ doc.file_doc.url }}" target="_blank">{{ doc.name_document }}</a></li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

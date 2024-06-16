@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
-# импортируем модель новостей
-from .models import News, HistoryCompany
+from django.contrib.auth.models import Group
+# импортируем модели
+from .models import News, HistoryCompany, Reserve, Info, Policy, UserProfile
 
 
 # в этом файле все функции называются либо представления, либо контроллеры
@@ -31,40 +32,60 @@ def index(request) -> HttpResponse:
     return render(request, 'main/index.html', context)
 
 
-def info(request) -> HttpResponse:
-    """Функция, которая обрабатывает запросы на страницу с полезной информацией"""
-    context = {
-        'title': 'Полезная информация - Отдел кадров',
-        'info_title': 'Полезная информация',
-        'info_content': """"""
-    }
-    return render(request, 'main/info.html', context)
-
-
 def reserve(request) -> HttpResponse:
     """Функция, которая обрабатывает запросы на страницу с кадровым резервом"""
+
+    reserve_content = Reserve.objects.all().first()
+
     context = {
         'title': 'Кадровый резерв - Отдел кадров',
         'reserve_title': 'Кадровый резерв',
-        'reserve_content': """"""
+        'reserve_content': reserve_content
     }
     return render(request, 'main/personnel_reserve.html', context)
 
 
+def info(request) -> HttpResponse:
+    """Функция, которая обрабатывает запросы на страницу с полезной информацией"""
+
+    info_content = Info.objects.all().first()
+
+    context = {
+        'title': 'Полезная информация - Отдел кадров',
+        'info_title': 'Полезная информация',
+        'info_content': info_content
+    }
+    return render(request, 'main/info.html', context)
+
+
 def policy(request) -> HttpResponse:
     """Функция, которая обрабатывает запросы на страницу с политикой конфиденциальности"""
+
+    policy_content = Policy.objects.all().first()
+
     context = {
         'title': 'Политика конфиденциальности - Отдел кадров',
         'policy_title': 'Политика конфиденциальности',
-        'policy_content': """Текст политики конфиденциальности"""
+        'policy_content': policy_content
     }
     return render(request, 'main/privacy_policy.html', context)
 
 
 def hr_structure(request) -> HttpResponse:
     """Функция, которая обрабатывает запросы на страницу со структурой отдела кадров"""
+
+    user = UserProfile.objects.all()
+    groups = Group.objects.all()
+
+    group_users = {}
+
+    for group in groups:
+        users = group.user_set.all()
+        group_users[group.name] = users
+
     context = {
         'title': 'Структура отдела кадров',
-        'hr_title': 'Структура отдела кадров'
+        'hr_title': 'Структура отдела кадров',
+        'group_users': group_users
     }
     return render(request, 'main/hr_structure.html', context)

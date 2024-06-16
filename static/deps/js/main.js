@@ -1,27 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-  //код для модального окна
-  let buttons = document.querySelectorAll(".respond");
-  let modal = document.getElementById('modal');
-  let closeModal = document.getElementsByClassName('close')[0];
-
-  buttons.forEach(function(button) {
-    button.addEventListener("click", function() {
-      modal.style.display = "block";
-    });
-  });
-
-  closeModal.onclick = function() {
-    modal.style.display = "none";
-  }
-
-  window.onclick = function(event) {
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  }
-});
-
-
 // Код для новостей
 // получаем элементы header-content
 const header_content = document.querySelector('.header-content');
@@ -42,25 +18,25 @@ nextButton.addEventListener('click', showNextNews);
 
 // Функция для показа предыдущей новости
 function showPreviousNews() {
-  newsIndex = (newsIndex - 1 + newsCount) % newsCount;
-  updateNews();
+    newsIndex = (newsIndex - 1 + newsCount) % newsCount;
+    updateNews();
 }
 
 // Функция для показа следующей новости
 function showNextNews() {
-  newsIndex = (newsIndex + 1) % newsCount;
-  updateNews();
+    newsIndex = (newsIndex + 1) % newsCount;
+    updateNews();
 }
 
 // Функция для обновления отображения новостей
 function updateNews() {
-  news.forEach((slide, index) => {
-    if (index === newsIndex) {
-      slide.style.display = 'block';
-    } else {
-      slide.style.display = 'none';
-    }
-  });
+    news.forEach((slide, index) => {
+        if (index === newsIndex) {
+            slide.style.display = 'block';
+        } else {
+            slide.style.display = 'none';
+        }
+    });
 }
 
 // Инициализация слайдера

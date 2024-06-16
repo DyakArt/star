@@ -8,197 +8,29 @@
         <div class="container hr_structure">
             <div class="content">
                 <h2>{{ hr_title }}</h2>
-                <div class="block_hr_structure">
-                    <h3>Руководители</h3>
-                    <div class="table_hr">
-                        <table>
-                            <tr>
-                                <th class="col1">ФИО</th>
-                                <th class="col2">Должность</th>
-                                <th class="col3">Телефон</th>
-                                <th class="col4">E-mail</th>
-                            </tr>
-                            <tr>
-                                <td>Губкин Леонид Александрович</td>
-                                <td>Начальник отдела</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>Коротков Сергей Владимирович</td>
-                                <td>Заместитель начальника</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>Черкесов Виктор Алексеевич</td>
-                                <td>Заместитель начальника</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>Яковлев Дмитрий Владимирович</td>
-                                <td>Начальник бюро по работе с руководителями и специалистами</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>Кряталов Сергей Владимирович</td>
-                                <td>Секретарь ОК</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                        </table>
+                {% for group, users in group_users.items %}
+                    <div class="block_hr_structure">
+                        <h3> {{ group }} </h3>
+                        <div class="table_hr">
+                            <table>
+                                <tr>
+                                    <th class="col1">ФИО</th>
+                                    <th class="col2">Должность</th>
+                                    <th class="col3">Телефон</th>
+                                    <th class="col4">E-mail</th>
+                                </tr>
+                                {% for user in users %}
+                                    <tr>
+                                        <td>{{ user.first_name }} {{ user.last_name }} {{ user.userprofile.patronymic }}</td>
+                                        <td>{{ user.userprofile.job_title }}</td>
+                                        <td>{{ user.userprofile.phone_number }}</td>
+                                        <td>{{ user.email }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <div class="block_hr_structure">
-                    <h3>Бюро по работе со специалистами</h3>
-                    <div class="table_hr">
-                        <table>
-                            <tr>
-                                <th class="col1">ФИО</th>
-                                <th class="col2">Должность</th>
-                                <th class="col3">Телефон</th>
-                                <th class="col4">E-mail</th>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="block_hr_structure">
-                    <h3>Бюро текущей работы с кадрами</h3>
-                    <div class="table_hr">
-                        <table>
-                            <tr>
-                                <th class="col1">ФИО</th>
-                                <th class="col2">Должность</th>
-                                <th class="col3">Телефон</th>
-                                <th class="col4">E-mail</th>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="block_hr_structure">
-                    <h3>Группа по договорной работе</h3>
-                    <div class="table_hr">
-                        <table>
-                            <tr>
-                                <th class="col1">ФИО</th>
-                                <th class="col2">Должность</th>
-                                <th class="col3">Телефон</th>
-                                <th class="col4">E-mail</th>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="block_hr_structure">
-                    <h3>Бюро подготовки кадров</h3>
-                    <div class="table_hr">
-                        <table>
-                            <tr>
-                                <th class="col1">ФИО</th>
-                                <th class="col2">Должность</th>
-                                <th class="col3">Телефон</th>
-                                <th class="col4">E-mail</th>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                            <tr>
-                                <td>ФИО</td>
-                                <td>Должность</td>
-                                <td>Телефон</td>
-                                <td>E-mail</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </main>

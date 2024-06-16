@@ -13,10 +13,9 @@
                 </div>
                 <div class="doc_files">
                     <ul>
-                        <li><a href="#">Название заявления</a></li>
-                        <li><a href="#">Название заявления</a></li>
-                        <li><a href="#">Название заявления</a></li>
-                        <li><a href="#">Название заявления</a></li>
+                        {% for app in apps %}
+                            <li><a href="{{ app.file_app.url }}" target="_blank">{{ app.name }}</a></li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
