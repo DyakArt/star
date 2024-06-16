@@ -34,8 +34,12 @@
         </div>
 
         <div class="header-content">
-            <h2>{{ event_title }}</h2>
-            <p>{{ event_content }}</p>
+            {% for new in news %}
+                <div class="news">
+                    <h2>{{ new.title }}</h2>
+                    <p>{{ new.text }}</p>
+                </div>
+            {% endfor %}
             <div class="arrow-buttons">
                 <button class="arrow left-arrow">&lt;</button>
                 <button class="arrow right-arrow">&gt;</button>
@@ -51,10 +55,19 @@
             <div class="main_content">
                 <div class="text_main">
                     <h2>{{ history_title }}</h2>
-                    <p>{{ history_content_one }}</p>
-                    <p>{{ history_content_two }}</p>
+                    <p>{{ history_company.paragraph_one }}</p>
+                    <p>{{ history_company.paragraph_two }}</p>
                 </div>
-                <div class="video_main"></div>
+                {% if history_company.video %}
+                    <div class="video_main">
+                       <video width="731" controls>
+                            <source src="{{ history_company.video.url }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                {% else %}
+                    <div class="no_video_main"> </div>
+                {% endif %}
             </div>
         </div>
     </main>
