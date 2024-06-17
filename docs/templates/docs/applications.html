@@ -8,9 +8,9 @@
         <div class="container applications">
             <div class="content">
                 <h2>{{ applications_title }}</h2>
-                <div class="input-container">
-                    <input type="text" placeholder="Введите название заявления">
-                </div>
+                <form class="input-container" role="search" action="{% url 'docs:search_apps' %}" method="get">
+                    <input type="search" name="q" placeholder="Введите название заявления">
+                </form>
                 <div class="doc_files">
                     <ul>
                         {% for app in apps %}

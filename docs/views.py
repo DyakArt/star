@@ -3,6 +3,7 @@ from django.http import HttpResponse
 
 # импортируем модели
 from .models import Documents, Applications
+from .utils import q_search
 
 
 # в этом файле все функции называются либо представления, либо контроллеры
@@ -12,6 +13,11 @@ def documents(request) -> HttpResponse:
     """Функция, которая обрабатывает запросы на страницу с документами"""
 
     docs = Documents.objects.all()
+    query = request.GET.get('q', None)
+
+    # если поисковый запрос
+    if query:
+        docs = q_search(query, docs=docs)
 
     context = {
         'title': 'Документы - Отдел кадров',
@@ -25,6 +31,11 @@ def applications(request) -> HttpResponse:
     """Функция, которая обрабатывает запросы на страницу с заявлениями"""
 
     apps = Applications.objects.all()
+    query = request.GET.get('q', None)
+
+    # если поисковый запрос
+    if query:
+        apps = q_search(query, apps=apps)
 
     context = {
         'title': 'Заявления - Отдел кадров',

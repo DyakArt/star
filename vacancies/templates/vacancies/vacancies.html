@@ -8,68 +8,41 @@
         <div class="container vacancies">
             <div class="content">
                 <h2>{{ vacancies_title }}</h2>
-                <div class="block_vacancies">
-                    <h3 id="work_vacancies">Рабочие вакансии </h3>
-                    <div class="cards">
-                        <div class="card">
-                            <h4>Должность</h4>
-                            <p>50 000 ₽</p>
-                            <button class="respond">Откликнуться</button>
-                        </div>
-                        <div class="card">
-                            <h4>Должность</h4>
-                            <p>50 000 ₽</p>
-                            <button class="respond">Откликнуться</button>
-                        </div>
-                        <div class="card">
-                            <h4>Должность</h4>
-                            <p>50 000 ₽</p>
-                            <button class="respond">Откликнуться</button>
-                        </div>
-                        <div class="card">
-                            <h4>Должность</h4>
-                            <p>50 000 ₽</p>
-                            <button class="respond">Откликнуться</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="block_vacancies">
-                    <h3 id="engineering_vacancies">Инженерно-технические вакансии </h3>
-                    <div class="cards">
-                        <div class="card">
-                            <h4>Должность</h4>
-                            <p>50 000 ₽</p>
-                            <button class="respond">Откликнуться</button>
-                        </div>
-                        <div class="card">
-                            <h4>Должность</h4>
-                            <p>50 000 ₽</p>
-                            <button class="respond">Откликнуться</button>
-                        </div>
-                        <div class="card">
-                            <h4>Должность</h4>
-                            <p>50 000 ₽</p>
-                            <button class="respond">Откликнуться</button>
-                        </div>
-                        <div class="card">
-                            <h4>Должность</h4>
-                            <p>50 000 ₽</p>
-                            <button class="respond">Откликнуться</button>
+                {% for group, vacs in group_vac.items %}
+                    <div class="block_vacancies">
+                        <h3 id="work_vacancies">{{ group }} </h3>
+                        <div class="cards">
+                            {% for vac in vacs %}
+                                <div class="card">
+                                    <h4>{{ vac.job_title }}</h4>
+                                    {% if vac.subunit %}
+                                        <p class="vacancies_info">Подразделение: {{ vac.subunit }}</p>
+                                    {% endif %}
+                                    {% if vac.required_education %}
+                                        <p class="vacancies_info">Образование: {{ vac.required_education }}</p>
+                                    {% endif %}
+                                    {% if vac.phone %}
+                                        <p class="vacancies_info">Телефон: {{ vac.phone }}</p>
+                                    {% endif %}
+                                    {% if vac.salary %}
+                                        <p class="salary">{{ vac.salary }} ₽</p>
+                                    {% endif %}
+                                    <button class="respond">Откликнуться</button>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
-                </div>
-                <div class="block_vacancies blank_vacancies">
-                    <h3 id="blank_vacancies">Анкета соискателя вакансии </h3>
-                    <div class="doc_files blank">
-                        <a href="#">Скачать бланк</a>
+                {% endfor %}
+                {% for group, files in group_vac_files.items %}
+                    <div class="block_vacancies blank_vacancies">
+                        <h3 id="blank_vacancies"> {{ group }} </h3>
+                            <div class="doc_files blank">
+                                {% for file in files %}
+                                    <a href="{{ file.file_vac.url }}" target="_blank">{{ file.file_name }}</a>
+                                {% endfor %}
+                            </div>
                     </div>
-                </div>
-                <div class="block_vacancies resume_vacancies">
-                    <h3 id="resume_vacancies">Форма резюме </h3>
-                    <div class="doc_files blank">
-                        <a href="#">Скачать бланк</a>
-                    </div>
-                </div>
+                {% endfor %}
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <span class="close">&times;</span>

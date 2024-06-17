@@ -168,3 +168,7 @@ INTERNAL_IPS = [
 
 # автоинкремент (+1) id для каждой новой записи в БД в каждом приложении
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Email
+# EMAIL_BACKEND = 'django.core.mailbackends.console.EmailBackend'

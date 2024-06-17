@@ -5,7 +5,7 @@ from django.db import models
 # Создаем таблицу для документов
 class Documents(models.Model):
     # Поле для названия документа
-    name_document = models.CharField(max_length=255, verbose_name='Название документа', blank=True)
+    name_document = models.CharField(max_length=255, verbose_name='Название документа', blank=True, null=True)
     # Поле для загрузки документа
     file_doc = models.FileField(upload_to='documents/', verbose_name='Документ')
 
@@ -32,7 +32,7 @@ class Documents(models.Model):
 # Создаем таблицу для заявлений
 class Applications(models.Model):
     # Поле для названия заявления
-    name = models.CharField(max_length=255, verbose_name='Название заявления', blank=True)
+    name = models.CharField(max_length=255, verbose_name='Название заявления', blank=True, null=True)
     # Поле для загрузки заявления
     file_app = models.FileField(upload_to='documents/applications/', verbose_name='Заявление')
 

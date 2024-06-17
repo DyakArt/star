@@ -10,3 +10,5 @@ admin.site.register(Documents)
 
 # регистрируем таблицу Applications в админ панели
 admin.site.register(Applications)
+
+
