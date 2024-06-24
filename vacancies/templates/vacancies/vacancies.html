@@ -10,7 +10,7 @@
                 <h2>{{ vacancies_title }}</h2>
                 {% for group, vacs in group_vac.items %}
                     <div class="block_vacancies">
-                        <h3 id="work_vacancies">{{ group }} </h3>
+                        <h3 id='{{ group }}'>{{ group }} </h3>
                         <div class="cards">
                             {% for vac in vacs %}
                                 <div class="card">
@@ -27,7 +27,7 @@
                                     {% if vac.salary %}
                                         <p class="salary">{{ vac.salary }} ₽</p>
                                     {% endif %}
-                                    <button class="respond">Откликнуться</button>
+                                    <button class="respond" data-title="{{ vac.job_title }}">Откликнуться</button>
                                 </div>
                             {% endfor %}
                         </div>
@@ -46,7 +46,7 @@
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <span class="close">&times;</span>
-                        <h1>Должность</h1>
+                        <h1 id="modal-job-title"> Должность </h1>
                         <div class="input-container input_modal_window">
                             <input type="text" placeholder="ФИО">
                             <input type="text" placeholder="E-mail">

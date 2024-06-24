@@ -1,0 +1,20 @@
+[
+  {
+    "model":"vacancies.vacfiles",
+    "pk":7,
+    "fields":{
+      "file_name":"Скачать бланк",
+      "file_vac":"documents/vacancies/doc.docx",
+      "vac_files_group":1
+    }
+  },
+  {
+    "model":"vacancies.vacfiles",
+    "pk":8,
+    "fields":{
+      "file_name":"Скачать бланк",
+      "file_vac":"documents/vacancies/doc_z9b18D1.docx",
+      "vac_files_group":2
+    }
+  }
+]

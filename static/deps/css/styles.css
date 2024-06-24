@@ -100,11 +100,7 @@ header {
     width: 280px;
     height: 20px;
     font-size: 14px;
-    justify-content: space-between;
-}
-
-.header_contacts span {
-    padding-left: 50px;
+    justify-content: end;
 }
 
 .header_contacts a:hover {
@@ -303,7 +299,7 @@ footer h3 {
 .footer_nav {
     display: flex;
     padding-top: 50px;
-    width: 1425px;
+    width: 1297px;
     height: 172px;
     justify-content: space-between;
 }
@@ -311,7 +307,7 @@ footer h3 {
 .footer_links {
     display: flex;
     flex-direction: row;
-    gap: 165px;
+    gap: 237px;
 }
 
 .footer_links li {
@@ -657,8 +653,9 @@ tr:nth-child(odd) {
     background-color: #fefefe;
     margin: 15% auto;
     border: 1px solid #888;
-    width: 600px;
-    height: 440px;
+    width: 800px;
+    height: auto;
+    padding-bottom: 50px;
 }
 
 .modal-content h1 {

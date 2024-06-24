@@ -1,0 +1,16 @@
+[
+  {
+    "model":"vacancies.vacanciesgroup",
+    "pk":1,
+    "fields":{
+      "group_title":"Рабочие вакансии"
+    }
+  },
+  {
+    "model":"vacancies.vacanciesgroup",
+    "pk":2,
+    "fields":{
+      "group_title":"Инженерно-технические вакансии"
+    }
+  }
+]

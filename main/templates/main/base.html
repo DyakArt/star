@@ -19,10 +19,7 @@
             </div>
             <div class="header_contacts">
                 <div>
-                    <a href="mailto:info@star.ru">info@star.ru</a>
-                </div>
-                <div>
-                    <span>+7 (818) 469-60-93</span>
+                    <span>Телефон: 20-93</span>
                 </div>
             </div>
         </div>
@@ -68,17 +65,11 @@
             <div class="footer_vacancies">
                 <h3><a href="{% url 'vacancies:vacancies' %}">ВАКАНСИИ</a></h3>
                 <ul>
-                    <li><a href="{% url 'vacancies:vacancies' %}#work_vacancies">Рабочие вакансии</a></li>
-                    <li><a href="{% url 'vacancies:vacancies' %}#engineering_vacancies">Инженерно-технические вакансии</a></li>
-                    <li><a href="{% url 'vacancies:vacancies' %}#blank_vacancies">Анкета соискателя</a></li>
-                    <li><a href="{% url 'vacancies:vacancies' %}#resume_vacancies">Форма резюме</a></li>
+                    {% for group, vacs in group_vac.items %}
+                        <li><a href="{% url 'vacancies:vacancies' %}#{{ group }}">{{ group }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
-        </div>
-        <div class="footer_contacts">
-            <p>164509, Архангельская область, г. Северодвинск, проспект Машиностроителей, д. 12</p>
-            <span>+7 (818) 459-60-93</span>
-            <a href="mailto:info@star.ru">info@star.ru</a>
         </div>
     </div>
 </footer>

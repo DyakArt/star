@@ -3,9 +3,13 @@ document.addEventListener("DOMContentLoaded", function() {
   let buttons = document.querySelectorAll(".respond");
   let modal = document.getElementById('modal');
   let closeModal = document.getElementsByClassName('close')[0];
+  let modalJobTitle = document.getElementById('modal-job-title');
 
   buttons.forEach(function(button) {
     button.addEventListener("click", function() {
+      // Устанавливаем название должности в модальное окно
+      modalJobTitle.textContent = this.getAttribute('data-title');
+
       modal.style.display = "block";
     });
   });

@@ -1,0 +1,98 @@
+[
+  {
+    "model":"vacancies.vacancies",
+    "pk":1,
+    "fields":{
+      "job_title":"Инженер по стандартизации",
+      "subunit":"УКиС",
+      "required_education":"Высшее профессиональное техническое образование",
+      "phone":"27-86, 43-67",
+      "salary":null,
+      "vacancies_group":2
+    }
+  },
+  {
+    "model":"vacancies.vacancies",
+    "pk":2,
+    "fields":{
+      "job_title":"Секретарь руководителя",
+      "subunit":"ПОО",
+      "required_education":"Среднее профессиональное образование",
+      "phone":"60-80, 60-83",
+      "salary":null,
+      "vacancies_group":1
+    }
+  },
+  {
+    "model":"vacancies.vacancies",
+    "pk":3,
+    "fields":{
+      "job_title":"Секретарь руководителя с выполнением обязанностей табельщика (временно)",
+      "subunit":"ООТД",
+      "required_education":"Среднее профессиональное образование",
+      "phone":"27-33",
+      "salary":null,
+      "vacancies_group":1
+    }
+  },
+  {
+    "model":"vacancies.vacancies",
+    "pk":4,
+    "fields":{
+      "job_title":"Инженер по инструменту",
+      "subunit":"ПМ",
+      "required_education":"Высшее профессиональное техническое образование",
+      "phone":"23-68",
+      "salary":null,
+      "vacancies_group":2
+    }
+  },
+  {
+    "model":"vacancies.vacancies",
+    "pk":5,
+    "fields":{
+      "job_title":"Юрисконсульт",
+      "subunit":"ОУИК",
+      "required_education":"Юриспруденция, знание основ гражданского законодательства",
+      "phone":"43-18",
+      "salary":null,
+      "vacancies_group":1
+    }
+  },
+  {
+    "model":"vacancies.vacancies",
+    "pk":6,
+    "fields":{
+      "job_title":"Бухгалтер",
+      "subunit":"Главная бухгалтерия",
+      "required_education":"Бухгалтерский учёт, анализ и аудит",
+      "phone":"65-39",
+      "salary":null,
+      "vacancies_group":1
+    }
+  },
+  {
+    "model":"vacancies.vacancies",
+    "pk":7,
+    "fields":{
+      "job_title":"Инженер по АСУП",
+      "subunit":"ОВИТ",
+      "required_education":"Прикладная математика и информатика",
+      "phone":"57-25",
+      "salary":null,
+      "vacancies_group":2
+    }
+  },
+  {
+    "model":"vacancies.vacancies",
+    "pk":8,
+    "fields":{
+      "job_title":"Инженер",
+      "subunit":"УКС",
+      "required_education":"Промышленное и гражданское строительство, Гидротехническое строительство",
+      "phone":"22-56",
+      "salary":"50 000",
+      "vacancies_group":2
+    }
+  }
+]

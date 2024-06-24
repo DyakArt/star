@@ -1,0 +1,26 @@
+[
+  {
+    "model":"docs.applications",
+    "pk":5,
+    "fields":{
+      "name":"Заявление 1",
+      "file_app":"documents/applications/app.docx"
+    }
+  },
+  {
+    "model":"docs.applications",
+    "pk":6,
+    "fields":{
+      "name":"Заявление 2",
+      "file_app":"documents/applications/app_2h0jOyU.docx"
+    }
+  },
+  {
+    "model":"docs.applications",
+    "pk":7,
+    "fields":{
+      "name":"Заявление 3",
+      "file_app":"documents/applications/app_rj4C4nL.docx"
+    }
+  }
+]

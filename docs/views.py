@@ -4,6 +4,8 @@ from django.http import HttpResponse
 # импортируем модели
 from .models import Documents, Applications
 from .utils import q_search
+from main.views import base
+from vacancies.models import VacanciesGroup, Vacancies
 
 
 # в этом файле все функции называются либо представления, либо контроллеры
@@ -15,6 +17,15 @@ def documents(request) -> HttpResponse:
     docs = Documents.objects.all()
     query = request.GET.get('q', None)
 
+    vac = Vacancies.objects.all()
+    groups = VacanciesGroup.objects.all()
+
+    group_vac = {}
+
+    for group in groups:
+        vacs = group.vacancies.all()
+        group_vac[group.group_title] = vacs
+
     # если поисковый запрос
     if query:
         docs = q_search(query, docs=docs)
@@ -22,7 +33,8 @@ def documents(request) -> HttpResponse:
     context = {
         'title': 'Документы - Отдел кадров',
         'documents_title': 'Документы',
-        'docs': docs
+        'docs': docs,
+        'group_vac': group_vac
     }
     return render(request, 'docs/documents.html', context)
 
@@ -33,6 +45,15 @@ def applications(request) -> HttpResponse:
     apps = Applications.objects.all()
     query = request.GET.get('q', None)
 
+    vac = Vacancies.objects.all()
+    groups = VacanciesGroup.objects.all()
+
+    group_vac = {}
+
+    for group in groups:
+        vacs = group.vacancies.all()
+        group_vac[group.group_title] = vacs
+
     # если поисковый запрос
     if query:
         apps = q_search(query, apps=apps)
@@ -40,6 +61,7 @@ def applications(request) -> HttpResponse:
     context = {
         'title': 'Заявления - Отдел кадров',
         'applications_title': 'Заявления',
-        'apps': apps
+        'apps': apps,
+        'group_vac': group_vac
     }
     return render(request, 'docs/applications.html', context)
