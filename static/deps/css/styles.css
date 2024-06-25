@@ -702,9 +702,8 @@ tr:nth-child(odd) {
 }
 
 /* Стилизация чекбокса */
-.submit_container input {
+.submit_container input[type="checkbox"] {
     position: absolute;
-    opacity: 0;
     cursor: pointer;
 }
 
@@ -721,7 +720,7 @@ tr:nth-child(odd) {
 }
 
 /* Изменение внешнего вида чекбокса при выборе */
-.submit_container input:checked ~ .checkmark {
+.submit_container input[type="checkbox"]:checked ~ .checkmark {
     background-color: #133D8D;
 }
 
@@ -733,7 +732,7 @@ tr:nth-child(odd) {
 }
 
 /* Отображение галочки при выборе */
-.submit_container input:checked ~ .checkmark:after {
+.submit_container input[type="checkbox"]:checked ~ .checkmark:after {
     display: block;
 }
 

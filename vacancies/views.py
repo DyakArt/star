@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
+from django.contrib import messages
 
 # импортируем модели
 from .models import VacanciesGroup, Vacancies, FilesVacanciesGroup, VacFiles
@@ -27,6 +28,9 @@ def vacancies(request) -> HttpResponse:
     for group in vac_files_groups:
         files = group.vac_files.all()
         group_vac_files[group.group_file_title] = files
+
+    # получаем параметр accept_policy
+    accept_policy = request.GET.get('accept_policy', None)
 
     context = {
         'title': 'Вакансии - Отдел кадров',

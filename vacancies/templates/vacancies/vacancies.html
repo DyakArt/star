@@ -44,20 +44,21 @@
                     </div>
                 {% endfor %}
                 <div id="modal" class="modal">
-                    <div class="modal-content">
+                    <form action="{% url 'vacancies:vacancies'%}" method="get" class="modal-content">
                         <span class="close">&times;</span>
                         <h1 id="modal-job-title"> Должность </h1>
                         <div class="input-container input_modal_window">
                             <input type="text" placeholder="ФИО">
                             <input type="text" placeholder="E-mail">
                             <input type="text" placeholder="Номер телефона">
-                            <button class="respond send">Отправить</button>
+                            <input type="hidden" name="accept_policy" id="hidden_accept_policy">
+                            <button type="submit" class="respond send">Отправить</button>
                         </div>
                         <label class="submit_container">Я ознакомлен и согласен с <a target="_blank" href="{% url 'main:policy' %}">политикой обработки персональных данных</a>
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
+                           <input class="checkmark" type="checkbox" name="accept_policy" id="check_policy" value="accept">
                         </label>
-                    </div>
+                    </form>
+
                 </div>
             </div>
         </div>
