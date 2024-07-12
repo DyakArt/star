@@ -2,8 +2,8 @@ from django.db import models
 
 
 # Через эти классы мы также можем взаимодействовать с таблицами из БД.
-# Создаем таблицу для документов
 class Documents(models.Model):
+    """Таблица для документов"""
     # Поле для названия документа
     name_document = models.CharField(max_length=255, verbose_name='Название документа', blank=True, null=True)
     # Поле для загрузки документа
@@ -29,8 +29,8 @@ class Documents(models.Model):
         return self.name_document
 
 
-# Создаем таблицу для заявлений
 class Applications(models.Model):
+    """Таблица для заявлений"""
     # Поле для названия заявления
     name = models.CharField(max_length=255, verbose_name='Название заявления', blank=True, null=True)
     # Поле для загрузки заявления

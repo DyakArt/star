@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = 'django-insecure-kxy@!!l*7t)nlh+#w=r)*d+6q$e_%#o^9&s!rkvi_)llp9$7+a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Меняется на False, когда выкатывается на основной сервер
@@ -144,6 +144,7 @@ USE_TZ = True
 # следующий примерный путь: /static/deps/css/style.css
 STATIC_URL = 'static/'
 
+STATIC_ROOT = BASE_DIR / 'static'
 # указываем дополнительные места, где django нужно искать статику
 # бросаем папку static в корень проекта, так как будем использовать одинаковые зависимости для всех приложений
 STATICFILES_DIRS = [

@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 
 # Через эти классы мы также можем взаимодействовать с таблицами из БД.
-# Создаем таблицу для новостей на главной странице
 class News(models.Model):
+    """Таблица для новостей на главной странице"""
     # перечисляем поля (атрибуты) таблицы
     # заголовок новости
     # verbose_name - название поля в админ панели
@@ -26,8 +26,8 @@ class News(models.Model):
         return self.title
 
 
-# Создаем таблицу для истории компании
 class HistoryCompany(models.Model):
+    """Таблица для истории компании"""
     # перечисляем поля (атрибуты) таблицы
     # verbose_name - название поля в админ панели
     # первый абзац истории
@@ -51,8 +51,8 @@ class HistoryCompany(models.Model):
         return 'История компании'
 
 
-# Создаем таблицу для кадрового резерва
 class Reserve(models.Model):
+    """Таблица для кадрового резерва"""
     # перечисляем поля (атрибуты) таблицы
     # verbose_name - название поля в админ панели
     # текст для кадрового резерва (временное решение)
@@ -72,8 +72,8 @@ class Reserve(models.Model):
         return 'Кадровый резерв'
 
 
-# Создаем таблицу для полезной информации
 class Info(models.Model):
+    """Таблица для полезной информации"""
     # перечисляем поля (атрибуты) таблицы
     # verbose_name - название поля в админ панели
     # текст для полезной информации (временное решение)
@@ -93,8 +93,8 @@ class Info(models.Model):
         return 'Полезная информация'
 
 
-# Создаем таблицу для полезной информации
 class Policy(models.Model):
+    """Таблица для политики конфиденциальности"""
     # перечисляем поля (атрибуты) таблицы
     # verbose_name - название поля в админ панели
     # текст для политики конфиденциальности (временное решение)
@@ -115,15 +115,17 @@ class Policy(models.Model):
 
 
 class UserProfile(models.Model):
+    """Таблица для дополнительной информации о пользователе"""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # Добавление новых полей
     patronymic = models.CharField(max_length=50, blank=True, null=True, verbose_name='Отчество')
     phone_number = models.CharField(max_length=20, blank=True, null=True, verbose_name='Номер телефона')
     job_title = models.CharField(max_length=150, blank=True, null=True, verbose_name='Должность')
 
-    def __str__(self):
-        return self.user.username
-
     class Meta:
+        db_table = 'user_profile'
         verbose_name = 'Доп. информация'
         verbose_name_plural = 'Доп. информация'
+
+    def __str__(self):
+        return self.user.username

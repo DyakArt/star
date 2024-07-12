@@ -1,9 +1,8 @@
 from django.db import models
 
 
-# Через эти классы мы также можем взаимодействовать с таблицами из БД.
-# Создаем таблицу для групп вакансий
 class VacanciesGroup(models.Model):
+    """Таблица для групп вакансий"""
     # Поле для названия группы вакансий
     group_title = models.CharField(max_length=70, verbose_name='Название раздела')
 
@@ -21,8 +20,8 @@ class VacanciesGroup(models.Model):
         return self.group_title
 
 
-# Создаем таблицу для вакансий
 class Vacancies(models.Model):
+    """Таблица для вакансий"""
     # Поле для названия должности
     job_title = models.CharField(max_length=200, verbose_name='Название должности')
     # Поле для названия подразделения
@@ -51,8 +50,8 @@ class Vacancies(models.Model):
         return self.job_title
 
 
-# Создаем таблицу для разделов файлов в вакансиях
 class FilesVacanciesGroup(models.Model):
+    """Таблица для разделов файлов в вакансиях"""
     # Поле для названия группы вакансий
     group_file_title = models.CharField(max_length=70, verbose_name='Название раздела файлов')
 
@@ -69,8 +68,8 @@ class FilesVacanciesGroup(models.Model):
         return self.group_file_title
 
 
-# Создаем таблицу для файлов вакансий
 class VacFiles(models.Model):
+    """Таблица для файлов вакансий"""
     # Поле для названия файла
     file_name = models.CharField(max_length=255, verbose_name='Название файла', default='Скачать бланк', blank=True, null=True)
     # Поле для файла вакансии

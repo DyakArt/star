@@ -2,6 +2,7 @@
 ../venv/
 .pylintrc
 __pycache__/
+.env
 
 # ide stuff
 .idea
@@ -11,6 +12,7 @@ __pycache__/
 # django stuff
 db.sqlite3
 media/
+fixtures/
 
 # url for figma
 static/deps/design_star/url_figma_star.url
