@@ -9,30 +9,31 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
+
+# загружаем данные для сессии
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = C:\Users\dyako\PycharmProjects\Programming\2Course\star\star
 # базовый путь к проекту (в котором лежит manage.py)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-kxy@!!l*7t)nlh+#w=r)*d+6q$e_%#o^9&s!rkvi_)llp9$7+a'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Меняется на False, когда выкатывается на основной сервер
 # (чтобы пользователю не отображалась отладочная информация на странице)
-DEBUG = True
+DEBUG = eval(os.getenv('DEBUG'))
 
 # * - указывает, что приложение может работать на любых хостах
 # или можно указать свои, например, mysite.com
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',' or ', ')
 
-# Application definition
 # Здесь определяем наши приложения (отдельные логические блоки, которые нам необходимы для проекта)
 
 INSTALLED_APPS = [
@@ -77,7 +78,7 @@ ROOT_URLCONF = 'star.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,9 +94,6 @@ TEMPLATES = [
 # какой протокол работы используем (wsgi or asgi)
 WSGI_APPLICATION = 'star.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
 # подключение БД
 DATABASES = {
     'default': {
@@ -103,9 +101,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 # валидаторы паролей (минимальная длина, верхний и нижний регистр и тд)
 AUTH_PASSWORD_VALIDATORS = [
@@ -123,9 +118,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
-
 # на каком языке работает приложение django, на каком языке будет отображаться admin-панель,
 # оповещения для пользователей и тд
 LANGUAGE_CODE = 'ru-ru'
@@ -137,19 +129,17 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 # какой префикс будет добавлен, при получении статических файлов (css, js и тд), в браузере будет отображаться
 # следующий примерный путь: /static/deps/css/style.css
 STATIC_URL = 'static/'
-
-STATIC_ROOT = BASE_DIR / 'static'
-# указываем дополнительные места, где django нужно искать статику
-# бросаем папку static в корень проекта, так как будем использовать одинаковые зависимости для всех приложений
-STATICFILES_DIRS = [
-    BASE_DIR / 'static'
-]
+if DEBUG:
+    # указываем дополнительные места, где django нужно искать статику
+    # бросаем папку static в корень проекта, так как будем использовать одинаковые зависимости для всех приложений
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static'
+    ]
+else:
+    STATIC_ROOT = BASE_DIR / 'static'
 
 # какой префикс будет добавлен, при получении медиа-файлов
 MEDIA_URL = 'media/'
@@ -164,12 +154,18 @@ INTERNAL_IPS = [
     # ...
 ]
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
 # автоинкремент (+1) id для каждой новой записи в БД в каждом приложении
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 # Email
-# EMAIL_BACKEND = 'django.core.mailbackends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+# как отправляются сообщения (протоколы)
+EMAIL_USE_TLS = eval(os.getenv('EMAIL_USE_TLS'))
+EMAIL_USE_SSL = eval(os.getenv('EMAIL_USE_SSL'))
+# порт почты
+EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
+# почта, с которой будут отправляться сообщения
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')

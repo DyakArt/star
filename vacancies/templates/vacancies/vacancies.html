@@ -1,5 +1,5 @@
 {#Указываем какой общий шаблон мы будем использовать для каждой страницы#}
-{% extends 'main/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {#Добавляем основной контент для страницы с вакансиями#}
@@ -27,7 +27,7 @@
                                     {% if vac.salary %}
                                         <p class="salary">{{ vac.salary }} ₽</p>
                                     {% endif %}
-                                    <button class="respond" data-title="{{ vac.job_title }}">Откликнуться</button>
+                                    <button class="respond btn_rsp" data-title="{{ vac.job_title }}">Откликнуться</button>
                                 </div>
                             {% endfor %}
                         </div>
@@ -44,18 +44,32 @@
                     </div>
                 {% endfor %}
                 <div id="modal" class="modal">
-                    <form action="{% url 'vacancies:vacancies'%}" method="get" class="modal-content">
+                    <form action="{% url 'vacancies:vacancies'%}" method="post" class="modal-content">
+                        {% csrf_token %}
                         <span class="close">&times;</span>
                         <h1 id="modal-job-title"> Должность </h1>
+                        <input type="hidden" id="id_job_title" name="job_title"
+                               value="{% if form.job_title.value %}{{ form.job_title.value }}{% endif %}">
                         <div class="input-container input_modal_window">
-                            <input type="text" placeholder="ФИО">
-                            <input type="text" placeholder="E-mail">
-                            <input type="text" placeholder="Номер телефона">
-                            <input type="hidden" name="accept_policy" id="hidden_accept_policy">
-                            <button type="submit" class="respond send">Отправить</button>
+                            <input type="text" name="full_name" placeholder="Введите ФИО" id="id_full_name"
+                                   value="{% if form.full_name.value %}{{ form.full_name.value }}{% endif %}" required>
+                            {% if form.full_name.errors %}
+                                {{ form.full_name.errors }}
+                            {% endif %}
+                            <input type="text" name="email" placeholder="Введите E-mail" id="id_email"
+                                   value="{% if form.email.value %}{{ form.email.value }}{% endif %}" required>
+                            {% if form.email.errors %}
+                                {{ form.email.errors }}
+                            {% endif %}
+                            <input type="text" name="phone" placeholder="Введите номер телефона" id="id_phone"
+                                   value="{% if form.phone.value %}{{ form.phone.value }}{% endif %}" required>
+                            {% if form.phone.errors %}
+                                {{ form.phone.errors }}
+                            {% endif %}
+                            <button type="submit" id='button_send' class="respond send">Отправить</button>
                         </div>
                         <label class="submit_container">Я ознакомлен и согласен с <a target="_blank" href="{% url 'main:policy' %}">политикой обработки персональных данных</a>
-                           <input class="checkmark" type="checkbox" name="accept_policy" id="check_policy" value="accept">
+                           <input class="checkmark" type="checkbox" name="accept_policy" id="check_policy" value="accept" required>
                         </label>
                     </form>
 

@@ -1,0 +1,18 @@
+{% load static %}
+
+<div>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div id="notification">
+                    {{ message }}
+                </div>
+            {% endif %}
+            {% if message.tags == 'warning' %}
+                <div id="notification">
+                    {{ message }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
