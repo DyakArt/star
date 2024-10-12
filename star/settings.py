@@ -97,8 +97,12 @@ WSGI_APPLICATION = 'star.wsgi.application'
 # подключение БД
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'star',
+        'USER': 'star',
+        'PASSWORD': 'star',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
