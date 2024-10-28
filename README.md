@@ -15,7 +15,7 @@
 ## Установка
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/DyakArt/star.git
+   git clone https://github.com/dyakart/star.git
    ```
 2. Перейдите в директорию проекта:
    ```bash
