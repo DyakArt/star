@@ -98,11 +98,11 @@ WSGI_APPLICATION = 'star.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'star',
-        'USER': 'star',
-        'PASSWORD': 'star',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.getenv('POSTGRES_DB', 'star'),
+        'USER': os.getenv('POSTGRES_USER', 'star'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'star'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 
