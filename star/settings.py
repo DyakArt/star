@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+import json
 
-# загружаем данные для сессии
+# Загружаем данные для сессии
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -28,11 +29,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # Меняется на False, когда выкатывается на основной сервер
 # (чтобы пользователю не отображалась отладочная информация на странице)
-DEBUG = eval(os.getenv('DEBUG'))
+DEBUG = os.getenv('DEBUG', 'False').lower() in ['true', '1', 't']
 
 # * - указывает, что приложение может работать на любых хостах
 # или можно указать свои, например, mysite.com
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',' or ', ')
+ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS', '').split(',') if host.strip()]
 
 # Здесь определяем наши приложения (отдельные логические блоки, которые нам необходимы для проекта)
 
@@ -166,10 +167,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 # как отправляются сообщения (протоколы)
-EMAIL_USE_TLS = eval(os.getenv('EMAIL_USE_TLS'))
-EMAIL_USE_SSL = eval(os.getenv('EMAIL_USE_SSL'))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'False').lower() in ['true', '1', 't']
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', 'False').lower() in ['true', '1', 't']
+
 # порт почты
-EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
 # почта, с которой будут отправляться сообщения
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
